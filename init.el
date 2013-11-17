@@ -23,6 +23,9 @@
 (global-set-key (kbd "<f6>") 'fs-lint)
 (global-set-key (kbd "<f7>") '(lambda()(interactive)(compile compile-command)))
 
+;;;; Auto load changes in disk.
+(global-auto-revert-mode t)
+
 ;;;; Key remappings.
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
@@ -31,6 +34,7 @@
 ;; Defalult indentation of 2 spaces.
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+(setq-default c-basic-offset 2)
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 (menu-bar-mode -1)
