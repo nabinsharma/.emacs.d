@@ -2,6 +2,9 @@
 ; Nabin Sharma
 ; Dec 10, 2012
 
+;;;; Default directory (home).
+(setq default-directory "~")
+
 ;;;; Load required path and start server.
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp"))
 (server-start)
