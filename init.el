@@ -5,6 +5,7 @@
 ;;;; Default directory (home).
 (setq default-directory "~")
 
+
 ;;;; Load required path and start server.
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp"))
 (server-start)
@@ -13,15 +14,19 @@
 (require 'ido)
 (ido-mode t)
 
+;;;; At work (Windows 7), activate Cygwin.
+(if (eq system-type 'windows-nt)
+    (progn
+      (require 'cygwin-mount)
+      (require 'setup-cygwin)))
+
 ;;;; Key bindings.
-(global-set-key (kbd "M-0")'delete-window)
-(global-set-key (kbd "M-1")'delete-other-windows)
-(global-set-key (kbd "M-2")'split-window-vertically)
-(global-set-key (kbd "M-3")'split-window-horizontally)
-(global-set-key (kbd "M-O")'(lambda ()(interactive)(other-window -1)))
-(global-set-key (kbd "M-o")'other-window)
-(global-set-key (kbd "<f6>") 'fs-lint)
-(global-set-key (kbd "<f7>") '(lambda()(interactive)(compile compile-command)))
+(global-set-key (kbd "M-0") 'delete-window)
+(global-set-key (kbd "M-1") 'delete-other-windows)
+(global-set-key (kbd "M-2") 'split-window-vertically)
+(global-set-key (kbd "M-3") 'split-window-horizontally)
+(global-set-key (kbd "M-O") '(lambda ()(interactive)(other-window -1)))
+(global-set-key (kbd "M-o") 'other-window)
 
 ;;;; Auto load changes in disk.
 (global-auto-revert-mode t)
@@ -31,7 +36,7 @@
 (setq mac-option-modifier 'meta)
 
 ;;;; Appearence.
-;; Defalult indentation of 2 spaces.
+;; Default indentation of 2 spaces.
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default c-basic-offset 2)
@@ -53,7 +58,11 @@
 ;; Remove scrollbar.
 (if (fboundp 'scroll-bar-mode)(scroll-bar-mode -1))
 
-;;;; C/C++ file association.
+;;;; Grin.
+(require 'grin)
+
+;;;; C/C++.
+;; File association.
 (add-to-list 'auto-mode-alist '("\\.cxx$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cc$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp$" . c++-mode))
@@ -66,6 +75,9 @@
 ;; Google C style
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
+
+;;;; Python.
+;; Default indentation.
 (setq python-indent 2)
 
 ;;;; Backups.
