@@ -14,11 +14,10 @@
 (require 'ido)
 (ido-mode t)
 
-;;;; At work (Windows 7), activate Cygwin.
+;;;; Cygwin.
+;; Learn Cygwin styles and mount points.
 (if (eq system-type 'windows-nt)
-    (progn
-      (require 'cygwin-mount)
-      (require 'setup-cygwin)))
+    (require 'cygwin-mount))
 
 ;;;; Key bindings.
 (global-set-key (kbd "M-0") 'delete-window)
