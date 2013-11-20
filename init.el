@@ -79,6 +79,10 @@
 ;; Default indentation.
 (setq python-indent 2)
 
+;;;; Protobuf mode.
+(require 'protobuf-mode)
+(add-to-list 'auto-mode-alist '("\\.proto$" . protobuf-mode))
+
 ;;;; Backups.
 (setq
  backup-by-copying t ; dont clobber symlinks
