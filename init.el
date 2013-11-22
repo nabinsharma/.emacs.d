@@ -77,7 +77,8 @@
 
 ;;;; Python.
 ;; Default indentation.
-(setq python-indent 2)
+(add-hook 'python-mode-hook
+          (lambda () (setq python-indent 2)))
 
 ;;;; Protobuf mode.
 (require 'protobuf-mode)
