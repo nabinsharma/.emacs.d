@@ -35,6 +35,8 @@
 (setq mac-option-modifier 'meta)
 
 ;;;; Appearence.
+;; Font.
+(set-face-attribute 'default nil :font "Inconsolata Medium")
 ;; Default indentation of 2 spaces.
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
