@@ -78,9 +78,12 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 
 ;;;; Python.
-;; Default indentation.
+;; Default indentation: 4 for home (Mac) and we use 2 in work.
 (add-hook 'python-mode-hook
-          (lambda () (setq python-indent 2)))
+          (lambda () 
+            ((if (eq system-type "darwin")
+                 (setq python-indent 4)
+               (setq python-indent 2)))))
 
 ;;;; Protobuf mode.
 (require 'protobuf-mode)
