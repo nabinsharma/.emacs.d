@@ -59,6 +59,13 @@
 ;; Remove scrollbar.
 (if (fboundp 'scroll-bar-mode)(scroll-bar-mode -1))
 
+;;;; Cygwin shell
+(defun cygwin-shell ()
+  "Run cygwin bash in shell mode."
+  (interactive)
+  (let ((explicit-shell-file-name "C:/cygwin/bin/bash"))
+    (call-interactively 'shell)))
+
 ;;;; Grin.
 (require 'grin)
 
@@ -99,6 +106,19 @@
             (auto-fill-mode 1)
             (if (eq window-system 'x)
                 (font-lock-mode 1))))
+(setq octave-comment-start "%")
+
+
+;;;; YAML mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;; Unlike python-mode, this mode follows the Emacs convention of not
+;; binding the ENTER key to newline-and-indent.  To get this
+;; behavior, add the key definition to yaml-mode-hook:
+(add-hook 'yaml-mode-hook
+          '(lambda ()
+             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ;;;; Backups.
 (setq
