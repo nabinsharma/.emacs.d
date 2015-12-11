@@ -40,6 +40,9 @@
 ;;;; Auto load changes in disk.
 (global-auto-revert-mode t)
 
+;;;; Enable auto-fill mode by default.
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
 ;;;; Key remappings.
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
@@ -96,14 +99,6 @@
   ((require 'google-c-style)
    (add-hook 'c-mode-common-hook 'google-set-c-style)))
 
-;;;; Python.
-;; Default indentation: 4 for home (Mac) and we use 2 in work.
-(add-hook 'python-mode-hook
-          (lambda () 
-            ((if (eq system-type "darwin")
-                 (setq python-indent 4)
-               (setq python-indent 2)))))
-
 ;;;; Protobuf mode.
 (require 'protobuf-mode)
 (add-to-list 'auto-mode-alist '("\\.proto$" . protobuf-mode))
@@ -120,7 +115,7 @@
                 (font-lock-mode 1))))
 (setq octave-comment-start "%")
 (setq octave-continuation-string "...")
-(setq octave-block-offset 3)
+(setq octave-block-offset 4)
 
 
 ;;;; YAML mode.
@@ -136,7 +131,7 @@
 
 ;;;; Perl mode.
 (require 'perl-mode)
-(setq perl-indent-level 3)
+(setq perl-indent-level 4)
 (add-to-list 'auto-mode-alist '("\\.pl$" . perl-mode))
 (add-to-list 'auto-mode-alist '("\\.tune$" . perl-mode))
 (add-to-list 'auto-mode-alist '("\\.symfun$" . perl-mode))
