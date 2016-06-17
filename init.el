@@ -114,7 +114,6 @@
 (setq octave-continuation-string "...")
 (setq octave-block-offset 4)
 
-
 ;;;; YAML mode.
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
