@@ -13,12 +13,6 @@
 ;;;; Default directory (home).
 (setq default-directory "~")
 
-;;;; Theme.
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-(if (eq system-type 'windows-nt)
-    (load-theme 'hickey t)
-  (load-theme 'solarized t))
-
 ;;;; Load required path and start server.
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp"))
 (server-start)
@@ -100,16 +94,7 @@
 (require 'protobuf-mode)
 (add-to-list 'auto-mode-alist '("\\.proto$" . protobuf-mode))
 
-;;;; Octave mode.
-(autoload 'octave-mode "octave-mod" nil t)
-(setq auto-mode-alist
-      (cons '("\\.m$" . octave-mode) auto-mode-alist))
-(add-hook 'octave-mode-hook
-          (lambda ()
-            (abbrev-mode 1)
-            (auto-fill-mode 0)
-            (if (eq window-system 'x)
-                (font-lock-mode 1))))
+;;;; Octave customizations.
 (setq octave-comment-start "%")
 (setq octave-continuation-string "...")
 (setq octave-block-offset 4)
